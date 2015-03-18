@@ -1,7 +1,7 @@
 {
   "name": "testnet-charger",
   "version": "0.0.5",
-  "description": "",
+  "description": "Prevent testnet faucet abuse by withdrawing once and then distributing the funds among addresses in wallet",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -21,5 +21,20 @@
     "bip39": "^2.1.0",
     "cb-wallet": "git://github.com/tradle/cb-wallet",
     "tape": "^3.5.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/tradle/testnet-charger/issues"
+  },
+  "homepage": "https://github.com/tradle/testnet-charger",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "bitcoin",
+    "testnet",
+    "faucet",
+    "withdraw",
+    "charge",
+    "wallet"
+  ]
 }
