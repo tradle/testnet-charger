@@ -1,0 +1,20 @@
+{
+  "name": "testnet-charger",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/*.js"
+  },
+  "author": "Mark Vayngrib <mark.vayngrib@lablz.com> (http://github.com/mvayngrib)",
+  "license": "MIT",
+  "dependencies": {
+    "bitcoinjs-lib": "^1.5.4",
+    "cb-wallet": "git://github.com/tradle/cb-wallet",
+    "concat-stream": "^1.4.7"
+  },
+  "devDependencies": {
+    "bip39": "^2.1.0",
+    "tape": "^3.5.0"
+  }
+}
