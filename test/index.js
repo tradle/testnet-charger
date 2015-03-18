@@ -29,7 +29,6 @@ test('charge, distribute', function(t) {
     for (var address in charges) {
       var found = unspents.some(function(u) {
         if (u.address === address && charges[address] === u.value) {
-          t.pass()
           return true
         }
       })

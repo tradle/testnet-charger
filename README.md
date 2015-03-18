@@ -5,7 +5,9 @@ Prevent testnet faucet abuse by withdrawing once and then distributing the funds
 ## Usage
 
 ```js
+    var Charger = require('testnet-charger')
     var c = new Charger(wallet) // wallet is instance of github.com/tradle/cb-wallet
+    // optional: c.setFaucet(c.faucets.HelloBlock)
     c.charge(wallet.getNextAddress(1), 1000)
     c.charge(wallet.getNextAddress(2), 1042)
     c.charge(wallet.getNextAddress(3), 2378)

@@ -1,15 +1,20 @@
 
-var faucet = require('./faucet')
+var faucets = require('tbtc-faucets')
 var bitcoin = require('bitcoinjs-lib')
 
 function Charger(wallet) {
   this._wallet = wallet
+  this._faucet = faucets.RoyalForkBlog
   this._to = []
   this._total = bitcoin.networks[this._wallet.networkName].feePerKb
   this._from = this._wallet.getNextAddress()
   this._builder = this._wallet.buildTx()
     .from(this._from)
     .minConf(0)
+}
+
+Charger.prototype.setFaucet = function(faucet) {
+  this._faucet = faucet
 }
 
 Charger.prototype.charge = function(address, amount) {
@@ -23,7 +28,7 @@ Charger.prototype.charge = function(address, amount) {
 Charger.prototype.execute = function(callback) {
   var self = this
 
-  faucet.withdraw(this._from, this._total, function(err, data) {
+  this._faucet.withdraw(this._from, this._total, function(err, data) {
     if (err) return callback(err)
 
     self._txId = data.id
