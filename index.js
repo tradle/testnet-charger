@@ -1,7 +1,6 @@
 
 var faucets = require('tbtc-faucets')
 var bitcoin = require('bitcoinjs-lib')
-var dezalgo = require('dezalgo')
 var noop = function() {}
 
 function Charger(wallet) {
@@ -57,4 +56,5 @@ Charger.prototype._waitFor = function(txId, callback) {
   })
 }
 
+Charger.faucets = faucets
 module.exports = Charger
