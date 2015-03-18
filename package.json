@@ -10,11 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "bitcoinjs-lib": "^1.5.4",
-    "cb-wallet": "git://github.com/tradle/cb-wallet",
     "concat-stream": "^1.4.7"
   },
   "devDependencies": {
     "bip39": "^2.1.0",
+    "cb-wallet": "git://github.com/tradle/cb-wallet",
     "tape": "^3.5.0"
   }
 }
