@@ -1,6 +1,6 @@
 {
   "name": "testnet-charger",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Prevent testnet faucet abuse by withdrawing once and then distributing the funds among addresses in wallet",
   "main": "index.js",
   "repository": {
