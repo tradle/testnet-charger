@@ -49,9 +49,9 @@ Charger.prototype._waitFor = function(txId, callback) {
   var self = this
   var method = this._wallet.getAddressIndex('external', this._from) === -1 ? 'bootstrap' : 'fetchTransactions'
 
-  this._wallet[method](function(err) {
+  this._wallet[method](function(err, updates) {
     if (err) return callback(err)
-    else if (self._wallet.getMetadata(txId)) return callback()
+    else if (self._wallet.getMetadata(txId)) return callback(null, updates)
     else return self._waitFor(txId, callback)
   })
 }
