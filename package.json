@@ -15,7 +15,7 @@
   "dependencies": {
     "bitcoinjs-lib": "^1.5.4",
     "concat-stream": "^1.4.7",
-    "tbtc-faucets": "^0.1.0"
+    "tbtc-faucets": "^0.1.1"
   },
   "devDependencies": {
     "bip39": "^2.1.0",
