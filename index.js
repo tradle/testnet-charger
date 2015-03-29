@@ -48,17 +48,21 @@ Charger.prototype._distribute = function(callback) {
 
 Charger.prototype._waitFor = function(txId, callback) {
   var self = this
-  var method = this._wallet.getAddressIndex('external', this._from) === -1 ? 'bootstrap' : 'fetchTransactions'
-
-  this._wallet[method](function(err, updates) {
-    if (err) return callback(err)
-    else if (self._wallet.getMetadata(txId)) return callback(null, updates)
-    else {
-      setTimeout(function() {
-        self._waitFor(txId, callback)
-      }, WAIT)
+  var intervalId = setInterval(tryAgain, WAIT)
+  this._wallet.on('tx', function(tx) {
+    if (tx.getId() === txId) {
+      clearInterval(intervalId)
+      callback()
     }
   })
+
+  function tryAgain() {
+    var addrIdx = self._wallet.getAddressIndex('external', self._from)
+    var method = addrIdx === -1 ? 'bootstrap' : 'fetchTransactions'
+    self._wallet[method]()
+  }
+
+  tryAgain()
 }
 
 Charger.faucets = faucets
