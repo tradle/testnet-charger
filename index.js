@@ -1,6 +1,7 @@
 
 var faucets = require('tbtc-faucets')
 var bitcoin = require('bitcoinjs-lib')
+var WAIT = 5000
 var noop = function() {}
 
 function Charger(wallet) {
@@ -52,7 +53,11 @@ Charger.prototype._waitFor = function(txId, callback) {
   this._wallet[method](function(err, updates) {
     if (err) return callback(err)
     else if (self._wallet.getMetadata(txId)) return callback(null, updates)
-    else return self._waitFor(txId, callback)
+    else {
+      setTimeout(function() {
+        self._waitFor(txId, callback)
+      }, WAIT)
+    }
   })
 }
 
